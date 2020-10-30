@@ -1,20 +1,55 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"-->
+<!--      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">-->
+<!--<head>-->
+<!--    <title>Spring Security - Login </title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div th:if="${param.error}">-->
+<!--    Invalid username and password.-->
+<!--</div>-->
+<!--<div th:if="${param.logout}">-->
+<!--    You have been logged out.-->
+<!--</div>-->
+<!--<form th:action="@{/login}" method="post">-->
+<!--    <div><label> User Name : <input type="text" name="username"/> </label></div>-->
+<!--    <div><label> Password: <input type="password" name="password"/> </label></div>-->
+<!--    <div><input type="submit" value="Sign In"/></div>-->
+<!--</form>-->
+<!--</body>-->
+<!--</html>-->
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-    <title>Spring Security - Login </title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div th:if="${param.error}">
-    Invalid username and password.
+<h2>Welcome</h2>
+<div class="container" id="container">
+    <div class="form-container sign-in-container">
+        <form th:action="@{/login}" method="post" id = "signInForm" >
+            <h1>Sign in</h1>
+            <div class="social-container">
+            </div>
+            <input type="email" required placeholder="Email" class="email" id="email"/>
+            <input type="password" required placeholder="Password" id="password" />
+            <p th:if="${param.error}" id = "loginError" class = "error">Email or password is incorrect</p>
+            <p th:if="${param.error}" id = "loggedout" class = "error">You have been logged out</p>
+            <div><input type="submit" value="Sign In"/></div>
+
+<!--            <button>Sign In</button>-->
+        </form>
+    </div>
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-right">
+                <h1>Hello, Friend!</h1>
+                <p>Enter your personal details and start journey with us</p>
+            </div>
+        </div>
+    </div>
 </div>
-<div th:if="${param.logout}">
-    You have been logged out.
-</div>
-<form th:action="@{/login}" method="post">
-    <div><label> User Name : <input type="text" name="username"/> </label></div>
-    <div><label> Password: <input type="password" name="password"/> </label></div>
-    <div><input type="submit" value="Sign In"/></div>
-</form>
 </body>
 </html>
