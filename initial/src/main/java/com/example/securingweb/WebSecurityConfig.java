@@ -17,9 +17,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-            .antMatchers("/public").permitAll()
+            .antMatchers("/public", "/styles.css").permitAll()
             .antMatchers("/admin_page").hasRole("ADMIN")
-            .anyRequest().authenticated()
+            .anyRequest()
+                .authenticated()
             .and()
             .exceptionHandling().accessDeniedPage("/unauthorized").and()
             .formLogin()
